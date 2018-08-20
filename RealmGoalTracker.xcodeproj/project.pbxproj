@@ -14,6 +14,7 @@
 		911D2781212770F90036F141 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 911D277F212770F90036F141 /* Main.storyboard */; };
 		911D2783212770F90036F141 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 911D2782212770F90036F141 /* Assets.xcassets */; };
 		911D2786212770F90036F141 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 911D2784212770F90036F141 /* LaunchScreen.storyboard */; };
+		911D279A212B61BD0036F141 /* GoalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911D2799212B61BD0036F141 /* GoalCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		911D2782212770F90036F141 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		911D2785212770F90036F141 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		911D2787212770F90036F141 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		911D2799212B61BD0036F141 /* GoalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalCell.swift; sourceTree = "<group>"; };
 		9FF0B6331AC072E565FC4F69 /* Pods-RealmGoalTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealmGoalTracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RealmGoalTracker/Pods-RealmGoalTracker.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -70,6 +72,7 @@
 				911D2782212770F90036F141 /* Assets.xcassets */,
 				911D2784212770F90036F141 /* LaunchScreen.storyboard */,
 				911D2787212770F90036F141 /* Info.plist */,
+				911D2799212B61BD0036F141 /* GoalCell.swift */,
 			);
 			path = RealmGoalTracker;
 			sourceTree = "<group>";
@@ -185,6 +188,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				911D279A212B61BD0036F141 /* GoalCell.swift in Sources */,
 				911D277E212770F90036F141 /* SecondViewController.swift in Sources */,
 				911D277A212770F90036F141 /* AppDelegate.swift in Sources */,
 				911D277C212770F90036F141 /* FirstViewController.swift in Sources */,
