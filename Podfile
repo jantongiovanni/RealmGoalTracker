@@ -6,5 +6,6 @@ target 'RealmGoalTracker' do
   use_frameworks!
 
   # Pods for RealmGoalTracker
+  pod 'RealmSwift'
 
 end
