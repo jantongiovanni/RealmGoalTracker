@@ -19,10 +19,10 @@ class SecondViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let realm = RealmService.shared.realm
-        myDoneTasks = realm.objects(RealmTask.self)
+        let secondRealm = RealmService.shared.realm
+        myDoneTasks = secondRealm.objects(RealmTask.self)
         
-        secondNotificationToken = realm.observe { (notification, realm) in
+        secondNotificationToken = secondRealm.observe { (notification, realm) in
             self.tableView.reloadData()
             //returns notification token
         }
@@ -46,7 +46,7 @@ extension SecondViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "doneGoalCell") as? GoalCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "doneGoalCell") as? DoneCell else { return UITableViewCell() }
         let myDoneTask = myDoneTasks[indexPath.row]
         cell.configure(with: myDoneTask)
         return cell

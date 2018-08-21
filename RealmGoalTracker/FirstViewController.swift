@@ -21,10 +21,10 @@ class FirstViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         //print("Count: \(myTasks.count)")
 
-        let realm = RealmService.shared.realm
-        myTasks = realm.objects(RealmTask.self)
+        let firstRealm = RealmService.shared.realm
+        myTasks = firstRealm.objects(RealmTask.self)
         
-        firstNotificationToken = realm.observe { (notification, realm) in
+        firstNotificationToken = firstRealm.observe { (notification, realm) in
             self.tableView.reloadData()
             //returns notification token
         }
