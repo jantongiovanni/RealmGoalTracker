@@ -15,5 +15,5 @@ class GoalCell: UITableViewCell {
     func configure(with myTask: RealmTask) {
         goalLabel.text = myTask.task
     }
-    
+
 }

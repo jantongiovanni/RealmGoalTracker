@@ -9,13 +9,13 @@
 import UIKit
 import RealmSwift
 
-class FirstViewController: UIViewController {
+class FirstViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var taskTextField: UITextField!
     
     var myTasks: Results<RealmTask>!
-    var notificationToken: NotificationToken?
+    var firstNotificationToken: NotificationToken?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +24,7 @@ class FirstViewController: UIViewController {
         let realm = RealmService.shared.realm
         myTasks = realm.objects(RealmTask.self)
         
-        notificationToken = realm.observe { (notification, realm) in
+        firstNotificationToken = realm.observe { (notification, realm) in
             self.tableView.reloadData()
             //returns notification token
         }
@@ -33,23 +33,26 @@ class FirstViewController: UIViewController {
             print(error ?? "no error detected")
         }
     
+        self.taskTextField.delegate = self
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        notificationToken?.invalidate()
+        firstNotificationToken?.invalidate()
         RealmService.shared.stopObservingErrors(in: self)
     }
 
     @IBAction func onTapAddTask(_ sender: Any) {
         let taskText = taskTextField.text ?? ""
-        let newTask = RealmTask(task: taskText, isComplete: false)
+        let newTask = RealmTask(createdAt: Date(), task: taskText, isComplete: false)
         RealmService.shared.create(newTask)
-        
-        
-        
     }
     
+    
+    func textFieldShouldReturn(_ textfield: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
 
 }
 

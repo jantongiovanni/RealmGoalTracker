@@ -9,12 +9,14 @@
 import Foundation
 import RealmSwift
 
+
 class RealmService {
     
     private init() {}
     static let shared = RealmService()
     
-    var realm = try! Realm()
+    
+    let realm = try! Realm()
     
     func create<T: Object>(_ object: T) {
         do {
