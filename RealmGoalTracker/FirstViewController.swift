@@ -7,32 +7,61 @@
 //
 
 import UIKit
+import RealmSwift
 
 class FirstViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var taskTextField: UITextField!
+    
+    var myTasks: Results<RealmTask>!
+    var notificationToken: NotificationToken?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        //print("Count: \(myTasks.count)")
+
+        let realm = RealmService.shared.realm
+        myTasks = realm.objects(RealmTask.self)
+        
+        notificationToken = realm.observe { (notification, realm) in
+            self.tableView.reloadData()
+            //returns notification token
+        }
+        
+        RealmService.shared.observeRealmErrors(in: self) { (error) in
+            print(error ?? "no error detected")
+        }
+    
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        notificationToken?.invalidate()
+        RealmService.shared.stopObservingErrors(in: self)
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    @IBAction func onTapAddTask(_ sender: Any) {
+        let taskText = taskTextField.text ?? ""
+        let newTask = RealmTask(task: taskText, isComplete: false)
+        RealmService.shared.create(newTask)
+        
+        
+        
     }
+    
 
 }
 
 extension FirstViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return myTasks.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "GoalCell") as? GoalCell else { return UITableViewCell() }
-        //let pickUpLine = pickUpLines[indexPath.row]
-        //cell.configure(with: pickUpLine)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "goalCell") as? GoalCell else { return UITableViewCell() }
+        let myTask = myTasks[indexPath.row]
+        cell.configure(with: myTask)
        return cell
     }
     
@@ -42,4 +71,14 @@ extension FirstViewController: UITableViewDataSource {
 }
 
 extension FirstViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("selected")
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        guard editingStyle == .delete else { return }
+        print("delete")
+        let myTask = myTasks[indexPath.row]
+        RealmService.shared.delete(myTask)
+    }
 }

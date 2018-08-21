@@ -12,4 +12,8 @@ class GoalCell: UITableViewCell {
     
     @IBOutlet weak var goalLabel: UILabel!
     
+    func configure(with myTask: RealmTask) {
+        goalLabel.text = myTask.task
+    }
+    
 }
