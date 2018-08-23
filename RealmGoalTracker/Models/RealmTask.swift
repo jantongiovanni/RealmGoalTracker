@@ -13,13 +13,13 @@ import RealmSwift
     
     dynamic var createdAt = Date()
     dynamic var task: String = ""
-    let isComplete = RealmOptional<Bool>()
+    dynamic var isComplete = false
     
-    convenience init(createdAt: Date, task: String, isComplete: Bool?){
+    convenience init(createdAt: Date, task: String, isComplete: Bool){
         self.init()
         self.createdAt = createdAt
         self.task = task
-        self.isComplete.value = isComplete
+        self.isComplete = isComplete
     }
     
 }

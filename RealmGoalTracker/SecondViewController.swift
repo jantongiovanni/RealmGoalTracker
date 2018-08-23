@@ -15,6 +15,8 @@ class SecondViewController: UIViewController {
     
     var myDoneTasks: Results<RealmTask>!
     var secondNotificationToken: NotificationToken?
+    
+    var accessory = UITableViewCellAccessoryType.none
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,6 +54,7 @@ class SecondViewController: UIViewController {
 
 
 extension SecondViewController: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return myDoneTasks.count
     }
@@ -59,6 +62,10 @@ extension SecondViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "doneGoalCell") as? DoneCell else { return UITableViewCell() }
         let myDoneTask = myDoneTasks[indexPath.row]
+        if (myDoneTask.isComplete == true) {
+           accessory = UITableViewCellAccessoryType.checkmark
+            cell.accessoryType = accessory
+        } else { cell.accessoryType = UITableViewCellAccessoryType.none}
         cell.configure(with: myDoneTask)
         return cell
     }
@@ -66,21 +73,18 @@ extension SecondViewController: UITableViewDataSource {
 
 extension SecondViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("selected")
-       tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCellAccessoryType.checkmark
-        //let selectTask = RealmTask(isComplete: true)
-        //RealmService.shared.update(selectTask)
+        //tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCellAccessoryType.checkmark
         let selectedTask = myDoneTasks[indexPath.row]
-        let dict: [String: Any?] = ["isComplete" : true]
-        //            let dict: [String: Any?] = ["line": line, "score": score, "email": email]
-        //selectedTask.isComplete = true
-        
-        RealmService.shared.update(selectedTask, with: dict)
-    }
-    
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        print("deselected")
-        tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCellAccessoryType.none
+        if (selectedTask.isComplete == false) {
+            print("selected")
+            let dict: [String: Any?] = ["isComplete" : true]
+            RealmService.shared.update(selectedTask, with: dict) }
+        else {
+            print("deselected")
+            let deselectedTask = myDoneTasks[indexPath.row]
+            let dict: [String: Any?] = ["isComplete" : false]
+            RealmService.shared.update(deselectedTask, with: dict)
+        }
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
