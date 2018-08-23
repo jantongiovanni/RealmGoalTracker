@@ -31,14 +31,18 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="027-sk-Zco">
-                                                    <rect key="frame" x="8" y="11" width="359" height="21"/>
+                                                    <rect key="frame" x="8" y="8" width="359" height="27.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="027-sk-Zco" secondAttribute="bottom" constant="8" id="Eez-ML-L46"/>
+                                                <constraint firstItem="027-sk-Zco" firstAttribute="leading" secondItem="N84-tf-7Fv" secondAttribute="leading" constant="8" id="F3i-TX-28s"/>
                                                 <constraint firstItem="027-sk-Zco" firstAttribute="leading" secondItem="N84-tf-7Fv" secondAttribute="leadingMargin" id="jVT-Mn-yGn"/>
+                                                <constraint firstAttribute="trailing" secondItem="027-sk-Zco" secondAttribute="trailing" constant="8" id="mhD-b1-2Tu"/>
+                                                <constraint firstItem="027-sk-Zco" firstAttribute="top" secondItem="N84-tf-7Fv" secondAttribute="top" constant="8" id="ovK-k6-tlM"/>
                                                 <constraint firstItem="027-sk-Zco" firstAttribute="trailing" secondItem="N84-tf-7Fv" secondAttribute="trailingMargin" id="pz4-W4-Bat"/>
                                                 <constraint firstItem="027-sk-Zco" firstAttribute="centerY" secondItem="N84-tf-7Fv" secondAttribute="centerY" id="yHP-Gx-xDX"/>
                                             </constraints>
@@ -126,14 +130,19 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Done Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uze-Ak-Xgk">
-                                                    <rect key="frame" x="32" y="11" width="233" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Done Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uze-Ak-Xgk">
+                                                    <rect key="frame" x="8" y="8" width="359" height="27.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="uze-Ak-Xgk" firstAttribute="top" secondItem="hzr-pa-rTD" secondAttribute="top" constant="8" id="72v-JH-ixF"/>
+                                                <constraint firstAttribute="trailing" secondItem="uze-Ak-Xgk" secondAttribute="trailing" constant="8" id="URs-ay-eAr"/>
+                                                <constraint firstAttribute="bottom" secondItem="uze-Ak-Xgk" secondAttribute="bottom" constant="8" id="ldV-QV-kH5"/>
+                                                <constraint firstItem="uze-Ak-Xgk" firstAttribute="leading" secondItem="hzr-pa-rTD" secondAttribute="leading" constant="8" id="rYg-2w-oqZ"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="doneLabel" destination="uze-Ak-Xgk" id="4nF-f7-gl9"/>

@@ -20,7 +20,8 @@ class SecondViewController: UIViewController {
         super.viewDidLoad()
         self.definesPresentationContext = true
 
-       
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 50
         
         let secondRealm = RealmService.shared.realm
         myDoneTasks = secondRealm.objects(RealmTask.self)
@@ -59,9 +60,9 @@ extension SecondViewController: UITableViewDataSource {
         return cell
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 63
-    }
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 63
+//    }
 }
 
 extension SecondViewController: UITableViewDelegate {

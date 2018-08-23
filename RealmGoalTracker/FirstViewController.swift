@@ -21,7 +21,10 @@ class FirstViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         self.definesPresentationContext = true
         //print("Count: \(myTasks.count)")
-
+        
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 50
+        
         let firstRealm = RealmService.shared.realm
         myTasks = firstRealm.objects(RealmTask.self)
         
@@ -77,9 +80,9 @@ extension FirstViewController: UITableViewDataSource {
        return cell
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 63
-    }
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 63
+//    }
 }
 
 extension FirstViewController: UITableViewDelegate {
