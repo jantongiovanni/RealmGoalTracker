@@ -20,6 +20,7 @@ class SecondViewController: UIViewController {
         super.viewDidLoad()
         self.definesPresentationContext = true
 
+        tableView.allowsMultipleSelection = true
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 50
         
@@ -48,6 +49,8 @@ class SecondViewController: UIViewController {
 
 }
 
+
+
 extension SecondViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return myDoneTasks.count
@@ -59,15 +62,25 @@ extension SecondViewController: UITableViewDataSource {
         cell.configure(with: myDoneTask)
         return cell
     }
-    
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return 63
-//    }
 }
 
 extension SecondViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("selected")
+       tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCellAccessoryType.checkmark
+        //let selectTask = RealmTask(isComplete: true)
+        //RealmService.shared.update(selectTask)
+        let selectedTask = myDoneTasks[indexPath.row]
+        let dict: [String: Any?] = ["isComplete" : true]
+        //            let dict: [String: Any?] = ["line": line, "score": score, "email": email]
+        //selectedTask.isComplete = true
+        
+        RealmService.shared.update(selectedTask, with: dict)
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        print("deselected")
+        tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCellAccessoryType.none
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
