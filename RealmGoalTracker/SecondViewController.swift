@@ -18,12 +18,19 @@ class SecondViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.definesPresentationContext = true
+
+       
         
         let secondRealm = RealmService.shared.realm
         myDoneTasks = secondRealm.objects(RealmTask.self)
         
         secondNotificationToken = secondRealm.observe { (notification, realm) in
-            self.tableView.reloadData()
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+                print("hit")
+                //returns notification token
+            }
             //returns notification token
         }
         
@@ -31,11 +38,11 @@ class SecondViewController: UIViewController {
             print(error ?? "no error detected")
         }    }
 
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        secondNotificationToken?.invalidate()
-        RealmService.shared.stopObservingErrors(in: self)
-    }
+//    override func viewWillDisappear(_ animated: Bool) {
+//        super.viewWillDisappear(animated)
+//        secondNotificationToken?.invalidate()
+//        RealmService.shared.stopObservingErrors(in: self)
+//    }
 
 
 }

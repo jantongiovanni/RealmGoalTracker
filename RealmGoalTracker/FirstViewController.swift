@@ -19,15 +19,24 @@ class FirstViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.definesPresentationContext = true
         //print("Count: \(myTasks.count)")
 
         let firstRealm = RealmService.shared.realm
         myTasks = firstRealm.objects(RealmTask.self)
         
         firstNotificationToken = firstRealm.observe { (notification, realm) in
-            self.tableView.reloadData()
-            //returns notification token
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+                print("hit")
+                //returns notification token
+            }
         }
+
+//        firstNotificationToken = firstRealm.observe { [weak tableView] changes in
+//                self.tableView.reloadData()
+//
+//        }
         
         RealmService.shared.observeRealmErrors(in: self) { (error) in
             print(error ?? "no error detected")
@@ -36,11 +45,11 @@ class FirstViewController: UIViewController, UITextFieldDelegate {
         self.taskTextField.delegate = self
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        firstNotificationToken?.invalidate()
-        RealmService.shared.stopObservingErrors(in: self)
-    }
+//    override func viewWillDisappear(_ animated: Bool) {
+//        super.viewWillDisappear(animated)
+//        firstNotificationToken?.invalidate()
+//        RealmService.shared.stopObservingErrors(in: self)
+//    }
 
     @IBAction func onTapAddTask(_ sender: Any) {
         let taskText = taskTextField.text ?? ""
