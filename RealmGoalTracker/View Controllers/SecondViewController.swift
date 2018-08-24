@@ -12,10 +12,12 @@ import RealmSwift
 class SecondViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var moodSlider: UISlider!
     
     var myDoneTasks: Results<RealmTask>!
-    var secondNotificationToken: NotificationToken?
+    var myDay: Results<RealmDate>!
     
+    var secondNotificationToken: NotificationToken?
     var accessory = UITableViewCellAccessoryType.none
 
     override func viewDidLoad() {
@@ -32,22 +34,13 @@ class SecondViewController: UIViewController {
         secondNotificationToken = secondRealm.observe { (notification, realm) in
             DispatchQueue.main.async {
                 self.tableView.reloadData()
-                print("hit")
-                //returns notification token
+                print("reload table 1")
             }
-            //returns notification token
         }
         
         RealmService.shared.observeRealmErrors(in: self) { (error) in
             print(error ?? "no error detected")
         }    }
-
-//    override func viewWillDisappear(_ animated: Bool) {
-//        super.viewWillDisappear(animated)
-//        secondNotificationToken?.invalidate()
-//        RealmService.shared.stopObservingErrors(in: self)
-//    }
-
 
 }
 

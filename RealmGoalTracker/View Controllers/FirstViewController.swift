@@ -55,9 +55,11 @@ class FirstViewController: UIViewController, UITextFieldDelegate {
 //    }
 
     @IBAction func onTapAddTask(_ sender: Any) {
+        if (taskTextField.text == "") {return}
         let taskText = taskTextField.text ?? ""
         let newTask = RealmTask(createdAt: Date(), task: taskText, isComplete: false)
         RealmService.shared.create(newTask)
+        taskTextField.text = ""
     }
     
     

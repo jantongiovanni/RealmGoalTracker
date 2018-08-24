@@ -18,6 +18,7 @@
 		911D279C212B85CF0036F141 /* RealmTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911D279B212B85CF0036F141 /* RealmTask.swift */; };
 		91A35E90212C740D00F30126 /* RealmDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A35E8F212C740D00F30126 /* RealmDate.swift */; };
 		91A35E92212C877B00F30126 /* DoneCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A35E91212C877B00F30126 /* DoneCell.swift */; };
+		91A35E96212F70A800F30126 /* JournalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A35E95212F70A800F30126 /* JournalViewController.swift */; };
 		91FBDC56212B88D900B1B16C /* RealmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91FBDC55212B88D900B1B16C /* RealmService.swift */; };
 /* End PBXBuildFile section */
 
@@ -36,6 +37,7 @@
 		911D279B212B85CF0036F141 /* RealmTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmTask.swift; sourceTree = "<group>"; };
 		91A35E8F212C740D00F30126 /* RealmDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDate.swift; sourceTree = "<group>"; };
 		91A35E91212C877B00F30126 /* DoneCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneCell.swift; sourceTree = "<group>"; };
+		91A35E95212F70A800F30126 /* JournalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalViewController.swift; sourceTree = "<group>"; };
 		91FBDC55212B88D900B1B16C /* RealmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmService.swift; sourceTree = "<group>"; };
 		9FF0B6331AC072E565FC4F69 /* Pods-RealmGoalTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealmGoalTracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RealmGoalTracker/Pods-RealmGoalTracker.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -73,17 +75,15 @@
 		911D2778212770F90036F141 /* RealmGoalTracker */ = {
 			isa = PBXGroup;
 			children = (
+				911D2784212770F90036F141 /* LaunchScreen.storyboard */,
+				911D277F212770F90036F141 /* Main.storyboard */,
+				91A35E94212F705F00F30126 /* Cells */,
+				91A35E93212F704100F30126 /* View Controllers */,
 				91A35E8C212C6C6600F30126 /* Models */,
 				911D2779212770F90036F141 /* AppDelegate.swift */,
-				911D277B212770F90036F141 /* FirstViewController.swift */,
-				911D277D212770F90036F141 /* SecondViewController.swift */,
-				911D277F212770F90036F141 /* Main.storyboard */,
-				911D2782212770F90036F141 /* Assets.xcassets */,
-				911D2784212770F90036F141 /* LaunchScreen.storyboard */,
-				911D2787212770F90036F141 /* Info.plist */,
-				911D2799212B61BD0036F141 /* GoalCell.swift */,
-				91A35E91212C877B00F30126 /* DoneCell.swift */,
 				91FBDC55212B88D900B1B16C /* RealmService.swift */,
+				911D2787212770F90036F141 /* Info.plist */,
+				911D2782212770F90036F141 /* Assets.xcassets */,
 			);
 			path = RealmGoalTracker;
 			sourceTree = "<group>";
@@ -95,6 +95,25 @@
 				911D279B212B85CF0036F141 /* RealmTask.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		91A35E93212F704100F30126 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				911D277B212770F90036F141 /* FirstViewController.swift */,
+				911D277D212770F90036F141 /* SecondViewController.swift */,
+				91A35E95212F70A800F30126 /* JournalViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		91A35E94212F705F00F30126 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				911D2799212B61BD0036F141 /* GoalCell.swift */,
+				91A35E91212C877B00F30126 /* DoneCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		A2D77F17DA5257A82E93F239 /* Frameworks */ = {
@@ -230,6 +249,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				91A35E90212C740D00F30126 /* RealmDate.swift in Sources */,
+				91A35E96212F70A800F30126 /* JournalViewController.swift in Sources */,
 				911D279A212B61BD0036F141 /* GoalCell.swift in Sources */,
 				91FBDC56212B88D900B1B16C /* RealmService.swift in Sources */,
 				911D277E212770F90036F141 /* SecondViewController.swift in Sources */,
