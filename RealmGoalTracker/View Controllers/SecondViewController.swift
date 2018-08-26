@@ -12,7 +12,7 @@ import RealmSwift
 class SecondViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var moodSlider: UISlider!
+    //@IBOutlet weak var moodSlider: UISlider!
     
     var myDoneTasks: Results<RealmTask>!
     var myDay: Results<RealmDate>!
@@ -28,7 +28,13 @@ class SecondViewController: UIViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 50
         
+        //moodSlider.isContinuous = false
+        
+        
+        
+        
         let secondRealm = RealmService.shared.realm
+        myDay = secondRealm.objects(RealmDate.self)
         myDoneTasks = secondRealm.objects(RealmTask.self)
         
         secondNotificationToken = secondRealm.observe { (notification, realm) in
@@ -42,7 +48,19 @@ class SecondViewController: UIViewController {
             print(error ?? "no error detected")
         }    }
 
+    //come back to this when the model is more established
+//    @IBAction func didMoveMoodSlider(_ sender: Any) {
+//        let moodVal = moodSlider.value
+//        print(moodVal)
+//        let moodDict: [String: Any?] = ["mood" : moodVal]
+//        RealmService.shared.update(myDay, with: moodDict)
+//        print("done")
+//    }
+    
+        
+        
 }
+
 
 
 
