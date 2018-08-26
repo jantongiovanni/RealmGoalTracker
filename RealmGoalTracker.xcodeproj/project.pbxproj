@@ -19,6 +19,8 @@
 		91A35E90212C740D00F30126 /* RealmDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A35E8F212C740D00F30126 /* RealmDate.swift */; };
 		91A35E92212C877B00F30126 /* DoneCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A35E91212C877B00F30126 /* DoneCell.swift */; };
 		91A35E96212F70A800F30126 /* JournalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A35E95212F70A800F30126 /* JournalViewController.swift */; };
+		91A35E9821331F2E00F30126 /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A35E9721331F2E00F30126 /* StatsViewController.swift */; };
+		91A35E9A2133226600F30126 /* StatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A35E992133226600F30126 /* StatCell.swift */; };
 		91FBDC56212B88D900B1B16C /* RealmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91FBDC55212B88D900B1B16C /* RealmService.swift */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +40,8 @@
 		91A35E8F212C740D00F30126 /* RealmDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDate.swift; sourceTree = "<group>"; };
 		91A35E91212C877B00F30126 /* DoneCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneCell.swift; sourceTree = "<group>"; };
 		91A35E95212F70A800F30126 /* JournalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalViewController.swift; sourceTree = "<group>"; };
+		91A35E9721331F2E00F30126 /* StatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
+		91A35E992133226600F30126 /* StatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatCell.swift; sourceTree = "<group>"; };
 		91FBDC55212B88D900B1B16C /* RealmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmService.swift; sourceTree = "<group>"; };
 		9FF0B6331AC072E565FC4F69 /* Pods-RealmGoalTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealmGoalTracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RealmGoalTracker/Pods-RealmGoalTracker.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -103,6 +107,7 @@
 				911D277B212770F90036F141 /* FirstViewController.swift */,
 				911D277D212770F90036F141 /* SecondViewController.swift */,
 				91A35E95212F70A800F30126 /* JournalViewController.swift */,
+				91A35E9721331F2E00F30126 /* StatsViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -112,6 +117,7 @@
 			children = (
 				911D2799212B61BD0036F141 /* GoalCell.swift */,
 				91A35E91212C877B00F30126 /* DoneCell.swift */,
+				91A35E992133226600F30126 /* StatCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -252,10 +258,12 @@
 				91A35E96212F70A800F30126 /* JournalViewController.swift in Sources */,
 				911D279A212B61BD0036F141 /* GoalCell.swift in Sources */,
 				91FBDC56212B88D900B1B16C /* RealmService.swift in Sources */,
+				91A35E9A2133226600F30126 /* StatCell.swift in Sources */,
 				911D277E212770F90036F141 /* SecondViewController.swift in Sources */,
 				911D279C212B85CF0036F141 /* RealmTask.swift in Sources */,
 				911D277A212770F90036F141 /* AppDelegate.swift in Sources */,
 				911D277C212770F90036F141 /* FirstViewController.swift in Sources */,
+				91A35E9821331F2E00F30126 /* StatsViewController.swift in Sources */,
 				91A35E92212C877B00F30126 /* DoneCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
