@@ -15,6 +15,7 @@ class FirstViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var taskTextField: UITextField!
     
     var myTasks: Results<RealmTask>!
+    //var myTasks: Results<RealmDate>!
     var firstNotificationToken: NotificationToken?
     
     override func viewDidLoad() {
@@ -26,8 +27,10 @@ class FirstViewController: UIViewController, UITextFieldDelegate {
         tableView.estimatedRowHeight = 50
         
         let firstRealm = RealmService.shared.realm
-        myTasks = firstRealm.objects(RealmTask.self)
+        myTasks = firstRealm.objects(RealmTask.self).sorted(byKeyPath: "createdAt", ascending: false)
         
+        //myTasks = firstRealm.objects(RealmDate.self)
+
         firstNotificationToken = firstRealm.observe { (notification, realm) in
             DispatchQueue.main.async {
                 self.tableView.reloadData()

@@ -15,7 +15,7 @@ class SecondViewController: UIViewController {
     //@IBOutlet weak var moodSlider: UISlider!
     
     var myDoneTasks: Results<RealmTask>!
-    var myDay: Results<RealmDate>!
+    //var myDay: Results<RealmDate>!
     
     var secondNotificationToken: NotificationToken?
     var accessory = UITableViewCellAccessoryType.none
@@ -30,12 +30,9 @@ class SecondViewController: UIViewController {
         
         //moodSlider.isContinuous = false
         
-        
-        
-        
         let secondRealm = RealmService.shared.realm
-        myDay = secondRealm.objects(RealmDate.self)
-        myDoneTasks = secondRealm.objects(RealmTask.self)
+        //myDay = secondRealm.objects(RealmDate.self)
+        myDoneTasks = secondRealm.objects(RealmTask.self).sorted(byKeyPath: "createdAt", ascending: false)
         
         secondNotificationToken = secondRealm.observe { (notification, realm) in
             DispatchQueue.main.async {
