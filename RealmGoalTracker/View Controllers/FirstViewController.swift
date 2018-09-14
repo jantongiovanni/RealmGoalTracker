@@ -8,11 +8,21 @@
 
 import UIKit
 import RealmSwift
+import SwiftDate
 
 class FirstViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var taskTextField: UITextField!
+    
+//    let date = NSDate()
+//    //let cal = NSCalendar(identifier: .gregorian)
+//    let cal: Calendar = Calendar(identifier: .gregorian)
+//    let newDate: Date
+    
+    let currentDate = Date()
+    let cal = Calendar(identifier: .gregorian)
+    
     
     var myTasks: Results<RealmTask>!
     //var myTasks: Results<RealmDate>!
@@ -20,16 +30,26 @@ class FirstViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+       let newDate = cal.startOfDay(for: currentDate)
+        //let dayend = cal.Day
+//        let date1 = cal.
+//        print(currentDate)
+//        print(newDate)
+        
+        
         self.definesPresentationContext = true
-        //print("Count: \(myTasks.count)")
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 50
         
         let firstRealm = RealmService.shared.realm
-        myTasks = firstRealm.objects(RealmTask.self).sorted(byKeyPath: "createdAt", ascending: false)
-        
+        myTasks = firstRealm.objects(RealmTask.self).filter("createdAt >= %@", newDate)
         //myTasks = firstRealm.objects(RealmDate.self)
+        //.sorted(byKeyPath: "createdAt", ascending: false)
+
+        //myTasks = firstRealm.objects(RealmTask.self).sorted(byKeyPath: "createdAt", ascending: false).filter("createdAt = %@", cal.isDateInToday("createdAt"))
+        
 
         firstNotificationToken = firstRealm.observe { (notification, realm) in
             DispatchQueue.main.async {

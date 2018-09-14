@@ -7,5 +7,5 @@ target 'RealmGoalTracker' do
 
   # Pods for RealmGoalTracker
   pod 'RealmSwift'
-
+  pod 'SwiftDate' , '~> 4.5.0'
 end
